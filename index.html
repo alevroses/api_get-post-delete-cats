@@ -7,33 +7,77 @@
       content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="./css/styles.css" />
+      href="./styles/styles.css" />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+      rel="stylesheet" />
     <title>API Cat</title>
   </head>
   <body>
-    <h1>Practice</h1>
-    <main>
-      <section class="container">
-        <!-- Content
-      <figure class="random-cats">
-        
-        <img src="" alt=""> 
-      </figure>
-    -->
-      </section>
-
-      <button type="button" class="random-button">
-        Random
-      </button>
+    <main class="main">
+      <h1 class="main__h1">Cat's</h1>
+      <img
+        src="./img/cat-print.svg"
+        alt=""
+        class="main__logo" />
+      <!-- Content -->
+      <img
+        src="https://cdn2.thecatapi.com/images/9v9.jpg"
+        alt=""
+        class="main__img hero" />
+      <!-- <img
+        src="https://cdn2.thecatapi.com/images/1m9.jpg"
+        alt=""
+        class="main__img hero" /> -->
     </main>
-    <section class="favorite-cats">
-      <!-- <figure class="favorite-cats">
-        Content 
-        <img src="" alt=""> 
-      </figure>-->
-      <!-- <button type="button">🔥</button> -->
-    </section>
+    <section class="random">
+      <h2 class="random__h2">Random Cats</h2>
 
-    <script src="./main.mjs" type="module"></script>
+      <div class="container">
+        <!-- Content -->
+        <!-- 
+				<figure class="figure">
+          <img src="" alt="" class="figure__img" />
+          <button class="figure__add"></button>
+        </figure>
+			-->
+      </div>
+
+      <button type="button" class="random__button">
+        Update cats
+      </button>
+    </section>
+    <section class="favorites">
+      <h2 class="favorites__h2">Favorite Cats</h2>
+
+      <div class="favorites-container">
+        <!-- Content -->
+        <!-- 
+          <figure class="figure">
+            <img src="" alt="" class="figure__favorite"/>
+            <button class="figure__remove"></button>
+          </figure>
+        -->
+      </div>
+    </section>
+    <footer class="footer">
+      <p>
+        Created by
+        <a
+          href="https://github.com/alevroses/api_get-post-delete-cats.git"
+          >Ale Roses</a
+        >
+      </p>
+      <img class="arrow" src="./img/arrow.svg" alt="">
+    </footer>
+    <script type="module" src="./main.mjs"></script>
   </body>
 </html>

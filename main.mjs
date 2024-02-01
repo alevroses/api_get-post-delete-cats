@@ -1,80 +1,89 @@
-import { randomImg } from "./random.mjs";
-import { fetchData } from "./methods/get.mjs";
-import { favorites } from "./methods/post.mjs";
+import { getRandom } from "./methods/get-random.mjs";
+import { updateCats } from "./methods/update-cats.mjs";
+import { postFavorites } from "./methods/post-favorites.mjs";
 import { getFavorites } from "./methods/get-favorites.mjs";
 import { deleteFavorites } from "./methods/delete-favorites.mjs";
 
-const showImages = async () => {
-  const data = await fetchData();
+const showRandom = async () => {
+  const data = await getRandom();
+  console.log(data);
 
   const container =
     document.querySelector(".container");
   container.innerHTML = "";
-  // let content = "";
 
   data.map(img => {
+    console.log(img.id);
     const figure = document.createElement("figure");
-    figure.className = "random-cats";
-
     const image = document.createElement("img");
-    image.className = "cat-image";
+    const add = document.createElement("img");
+    const description = document.createElement("p");
+
+    figure.className = "figure";
+    image.className = "figure__img";
+    add.className = "figure__add";
+    description.className = "figure__description";
+
     image.src = img.url;
-    image.alt = "";
-    figure.appendChild(image);
+    add.src = "./img/heart.svg";
 
-    const button = document.createElement("button");
-    button.className = "like-button";
-    button.innerHTML = "💙";
-    button.addEventListener("click", () => {
-      favorites(img.id);
-      loadFavorites();
+    description.textContent = "ID: " + img.id;
+
+    add.addEventListener("click", () => {
+      postFavorites(img.id);
+      //showFavorites();
     });
-    figure.appendChild(button);
 
-    container.appendChild(figure);
+    figure.append(image);
+    figure.append(add);
+    figure.append(description);
+    container.append(figure);
   });
 };
 
-const loadFavorites = async () => {
+const showFavorites = async () => {
   const data = await getFavorites();
 
   const container = document.querySelector(
-    ".favorite-cats"
+    ".favorites-container"
   );
   container.innerHTML = "";
 
   if (data.length === 0) {
-    // Mostrar un mensaje u otra acción cuando no hay favoritos disponibles
-    container.innerHTML =
-      "No hay favoritos disponibles.";
+    const message = document.createElement("p");
+    message.className = "message";
+    message.textContent =
+      "No favorites yet, add some kittens here.";
+
+    container.append(message);
   } else {
     data.map(favorite => {
-      //console.log(favorite.id);
+      console.log("favorite", favorite);
       const figure =
         document.createElement("figure");
-      figure.className = "delete";
       const image = document.createElement("img");
-      image.src = favorite.image.url;
-      image.className = "favorite-cat";
+      const remove = document.createElement("img");
 
-      const button =
-        document.createElement("button");
-      button.className = "delete-button";
-      button.innerHTML = "❌";
-      button.addEventListener("click", () => {
+      figure.className = "figure";
+      image.className = "figure__favorite";
+      remove.className = "figure__remove";
+
+      image.src = favorite.image.url;
+      remove.src = "./img/remove.svg";
+
+      remove.addEventListener("click", () => {
         deleteFavorites(favorite.id);
       });
 
       figure.append(image);
-      figure.append(button);
+      figure.append(remove);
       container.append(figure);
     });
   }
 };
 
-// window.addEventListener("load", showImages);
-showImages();
-randomImg();
-loadFavorites();
+showRandom();
+updateCats();
+showFavorites();
 
-export { showImages, loadFavorites };
+export { showRandom, showFavorites };
