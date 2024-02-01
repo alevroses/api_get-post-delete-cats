@@ -25,7 +25,7 @@ const showRandom = async () => {
     description.className = "figure__description";
 
     image.src = img.url;
-    add.src = "./styles/heart.svg";
+    add.src = "./img/heart.svg";
 
     description.textContent = "ID: " + img.id;
 
@@ -69,7 +69,7 @@ const showFavorites = async () => {
       remove.className = "figure__remove";
 
       image.src = favorite.image.url;
-      remove.src = "./styles/remove.svg";
+      remove.src = "./img/remove.svg";
 
       remove.addEventListener("click", () => {
         deleteFavorites(favorite.id);
