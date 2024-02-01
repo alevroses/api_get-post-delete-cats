@@ -1,0 +1,29 @@
+.main {
+  /* width: 96vw;
+  max-width: 850px; */
+  height: 80vh;
+}
+
+/* Random */
+.random {
+  height: 740px;
+}
+
+.random .container .figure {
+  height: 300px;
+}
+
+/* Favorites */
+.favorites-container {
+  /* display: grid;
+  width: 90vw;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 10px; */
+  max-width: 800px;
+}
+
+.favorites-container .figure {
+  max-width: 260px;
+  height: 200px;
+}
